@@ -6,6 +6,7 @@ extends Node2D
 # var b = "text"
 onready var controle_toque = $ToqueDeslize
 onready var espremedor = $Espremedor
+onready var animacoes = $SpriteJogador
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +21,10 @@ func _process(delta):
 func _on_ToqueDeslize_deslizar(direcao):
 	if direcao == controle_toque.direcoes.baixo:
 		espremedor.espremer(self)
+		animacoes.animation = 'agir'
+	elif direcao == controle_toque.direcoes.cima:
+		pass
+
+
+func _on_Espremedor_desespremido():
+		animacoes.animation = 'correr'
