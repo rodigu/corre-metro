@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Jogador/Jogador.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Obstaculo/Manipulador.gd" type="Script" id=2]
+[ext_resource path="res://components/gerador_objeto.gd" type="Script" id=3]
+[ext_resource path="res://src/Obstaculo/Pedra.tscn" type="PackedScene" id=4]
 
 [node name="Jogo" type="Node2D"]
 
@@ -9,3 +12,12 @@ current = true
 
 [node name="Jogador" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 250 )
+
+[node name="Manipulador" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Objetos" type="Node" parent="Manipulador"]
+
+[node name="GeradorObjeto" type="Node" parent="Manipulador"]
+script = ExtResource( 3 )
+objeto = ExtResource( 4 )

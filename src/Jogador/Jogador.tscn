@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://components/espremedor.gd" type="Script" id=1]
 [ext_resource path="res://components/toque_deslize.gd" type="Script" id=2]
@@ -6,21 +6,37 @@
 [ext_resource path="res://assets/spritesheet_50x50.png" type="Texture" id=4]
 [ext_resource path="res://components/pular.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=8]
-radius = 16.0
-height = 60.0
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 200, 200, 50, 50 )
-
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
 region = Rect2( 200, 0, 50, 50 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 4 )
 region = Rect2( 200, 350, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 300, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 250, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 50, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 100, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 150, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 200, 50, 50 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
@@ -40,7 +56,7 @@ region = Rect2( 0, 0, 50, 50 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 15 ) ],
+"frames": [ SubResource( 18 ), SubResource( 25 ), SubResource( 24 ), SubResource( 23 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "agir",
 "speed": 15.0
@@ -51,14 +67,10 @@ animations = [ {
 "speed": 15.0
 } ]
 
+[sub_resource type="CircleShape2D" id=17]
+
 [node name="Jogador" type="Node2D"]
 script = ExtResource( 3 )
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2( 0, -40 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 8 )
 
 [node name="ToqueDeslize" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -68,7 +80,7 @@ position = Vector2( 0, -40 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 13 )
 animation = "correr"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Espremedor" type="Node" parent="."]
@@ -78,6 +90,12 @@ tempo_espremindo = 0.08
 
 [node name="Pular" type="Node" parent="."]
 script = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, -5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 17 )
 
 [connection signal="deslizar" from="ToqueDeslize" to="." method="_on_ToqueDeslize_deslizar"]
 [connection signal="desespremido" from="Espremedor" to="." method="_on_Espremedor_desespremido"]

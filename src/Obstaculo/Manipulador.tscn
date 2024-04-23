@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://components/gerador_objeto.gd" type="Script" id=1]
+[ext_resource path="res://src/Obstaculo/Manipulador.gd" type="Script" id=2]
+[ext_resource path="res://src/Obstaculo/Pedra.tscn" type="PackedScene" id=3]
+
+[node name="Manipulador" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="GeradorObjeto" type="Node" parent="."]
+script = ExtResource( 1 )
+objeto = ExtResource( 3 )
+
+[node name="Objetos" type="Node2D" parent="."]

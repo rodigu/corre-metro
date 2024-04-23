@@ -15,9 +15,19 @@ _global_script_classes=[ {
 "path": "res://components/espremedor.gd"
 }, {
 "base": "Node",
+"class": "Fila",
+"language": "GDScript",
+"path": "res://components/fila.gd"
+}, {
+"base": "Node",
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://components/gerador_objeto.gd"
+}, {
+"base": "Node2D",
+"class": "Manipulador",
+"language": "GDScript",
+"path": "res://src/Obstaculo/Manipulador.gd"
 }, {
 "base": "Node2D",
 "class": "Obstaculo",
@@ -36,7 +46,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Espremedor": "",
+"Fila": "",
 "GeradorObjeto": "",
+"Manipulador": "",
 "Obstaculo": "",
 "Pular": "",
 "ToqueDeslize": ""
