@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://components/espremedor.gd" type="Script" id=1]
+[ext_resource path="res://components/toque_deslize.gd" type="Script" id=2]
+[ext_resource path="res://src/Jogador/Jogador.gd" type="Script" id=3]
+[ext_resource path="res://assets/spritesheet_50x50.png" type="Texture" id=4]
+[ext_resource path="res://components/pular.gd" type="Script" id=5]
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 16.0
+height = 60.0
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 200, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 350, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 150, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 50, 0, 50, 50 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 50, 50 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 15 ) ],
+"loop": true,
+"name": "agir",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "correr",
+"speed": 15.0
+} ]
+
+[node name="Jogador" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, -40 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 8 )
+
+[node name="ToqueDeslize" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="SpriteJogador" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 13 )
+animation = "correr"
+frame = 3
+playing = true
+
+[node name="Espremedor" type="Node" parent="."]
+script = ExtResource( 1 )
+tempo_espremido = 0.4
+tempo_espremindo = 0.08
+
+[node name="Pular" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="deslizar" from="ToqueDeslize" to="." method="_on_ToqueDeslize_deslizar"]
+[connection signal="desespremido" from="Espremedor" to="." method="_on_Espremedor_desespremido"]

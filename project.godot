@@ -10,11 +10,29 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Espremedor",
+"language": "GDScript",
+"path": "res://components/espremedor.gd"
+}, {
+"base": "Node",
+"class": "GeradorObjeto",
+"language": "GDScript",
+"path": "res://components/gerador_objeto.gd"
+}, {
+"base": "Node",
+"class": "Pular",
+"language": "GDScript",
+"path": "res://components/pular.gd"
+}, {
+"base": "Node",
 "class": "ToqueDeslize",
 "language": "GDScript",
-"path": "res://src/ToqueDeslize.gd"
+"path": "res://components/toque_deslize.gd"
 } ]
 _global_script_class_icons={
+"Espremedor": "",
+"GeradorObjeto": "",
+"Pular": "",
 "ToqueDeslize": ""
 }
 

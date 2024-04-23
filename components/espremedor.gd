@@ -1,3 +1,4 @@
+class_name Espremedor
 extends Node
 
 export var tempo_espremido = .8
@@ -16,10 +17,6 @@ var estagio = 0
 var espremido: Node2D = null
 
 signal desespremido
-
-
-func _ready():
-	pass
 
 
 func _process(delta):

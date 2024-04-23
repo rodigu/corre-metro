@@ -1,5 +1,5 @@
-extends Node
 class_name ToqueDeslize
+extends Node
 
 export var distancia_minima = 50
 # Explicitar as direcoes possiveis
@@ -22,10 +22,6 @@ onready var rastrea_toque = {
 }
 
 
-func _ready():
-	pass # Replace with function body.
-
-
 func _unhandled_input(event):
 	if !(event is InputEventScreenTouch):
 		return
@@ -37,6 +33,7 @@ func _unhandled_input(event):
 
 	if (not rastrea_toque.atual.pressionado) and (rastrea_toque.anterior.pressionado):
 		lidar_deslize(rastrea_toque.anterior.pos, rastrea_toque.atual.pos)
+
 
 func lidar_deslize(inicio: Vector2, fim: Vector2):
 	var dist = inicio.distance_to(fim)
