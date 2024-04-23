@@ -68,7 +68,7 @@ position = Vector2( 0, -40 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 13 )
 animation = "correr"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Espremedor" type="Node" parent="."]
@@ -81,3 +81,4 @@ script = ExtResource( 5 )
 
 [connection signal="deslizar" from="ToqueDeslize" to="." method="_on_ToqueDeslize_deslizar"]
 [connection signal="desespremido" from="Espremedor" to="." method="_on_Espremedor_desespremido"]
+[connection signal="caiu" from="Pular" to="." method="_on_Pular_caiu"]

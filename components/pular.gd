@@ -4,6 +4,8 @@ extends Node
 
 onready var objeto = get_parent()
 
+signal caiu
+
 var gravidade = 0
 var forca_pulo = 0
 var piso_pulo = 0
@@ -19,6 +21,7 @@ func _process(delta):
 	if objeto.position.y >= piso_pulo:
 		pulando = false
 		objeto.position.y = piso_pulo
+		emit_signal("caiu")
 
 
 ## Inicia pulo

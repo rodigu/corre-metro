@@ -16,16 +16,22 @@ var Estados = {
 var estado = Estados.Correndo
 
 
-
 func _on_ToqueDeslize_deslizar(direcao):
 	if direcao == controle_toque.direcoes.baixo:
 		espremedor.espremer(self)
 		animacoes.animation = 'agir'
 		estado = Estados.Abaixado
 	elif direcao == controle_toque.direcoes.cima:
+		animacoes.animation = 'agir'
 		pular.pular(forca_pulo, self.position.y, gravidade)
 		estado = Estados.Pulando
 
 
 func _on_Espremedor_desespremido():
-		animacoes.animation = 'correr'
+	animacoes.animation = 'correr'
+	estado = Estados.Correndo
+
+
+func _on_Pular_caiu():
+	animacoes.animation = 'correr'
+	estado = Estados.Correndo
