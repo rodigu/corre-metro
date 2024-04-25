@@ -8,6 +8,7 @@
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

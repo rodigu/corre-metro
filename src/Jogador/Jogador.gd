@@ -8,10 +8,12 @@ onready var espremedor = $Espremedor
 onready var animacoes = $SpriteJogador
 onready var pular = $Pular
 
-var Estados = {
-	Correndo = 'correndo',
-	Abaixado = 'abaixado',
-	Pulando = 'pulando'
+var pontos = 0
+
+enum Estados {
+	Correndo,
+	Abaixado,
+	Pulando
 }
 var estado = Estados.Correndo
 
@@ -35,3 +37,11 @@ func _on_Espremedor_desespremido():
 func _on_Pular_caiu():
 	animacoes.animation = 'correr'
 	estado = Estados.Correndo
+
+
+func _on_Area2D_area_entered(area):
+	if estado == Estados.Correndo:
+		pontos = 0
+	else:
+		pontos += 1
+	$Pontos/Pontos.text = str(pontos)

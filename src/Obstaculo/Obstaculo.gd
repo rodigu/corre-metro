@@ -4,7 +4,8 @@ extends Node2D
 export var tamanho_inicial: Vector2 = Vector2(1, 1)
 export var velocidade_inicial: float = 1
 export var aceleracao: float = 20
-export var fator_crescimento = .005
+export var fator_crescimento = .002
+export var movendo = false
 
 var velocidade = velocidade_inicial
 
@@ -14,6 +15,7 @@ func _ready():
 
 
 func _process(delta):
+	if not movendo: return
 	position.y += delta * velocidade
 	var crescimento = velocidade * fator_crescimento * delta
 	scale.x += crescimento
@@ -23,4 +25,6 @@ func _process(delta):
 
 func resetar(posicao: Vector2):
 	velocidade = velocidade_inicial
+	scale = tamanho_inicial
 	position = posicao
+	movendo = false
